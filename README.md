@@ -26,14 +26,13 @@ This method allows array-like inputs for the choise of long-period variance and 
 
 example:
 ```
-
 from stockpriceanna import VR_test
 from pandas_datareader import data
 
 p1= data.DataReader('AAPL', 'yahoo', "2013-01-01", "2019-01-01")  #a super large cap stock
 VR_test(data=p1["Adj Close"], sub_size=range(2,10))
-output:  (do not reject the null)
 
+output:  (do not reject the null)
 lvar_size
 2    0.3264
 3   -0.0111
@@ -58,7 +57,6 @@ lvar_size
 8   -1.9327
 9   -2.7329
 Name: Z-stat, dtype: float64
-
 ```
 
 
