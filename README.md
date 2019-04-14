@@ -4,9 +4,14 @@ a collection of tools for analyzing stock prices
 current version: 1.0.1
 
 installation:
-pip install stockpriceanna (or pip install stockpriceanna --upgrade)
+```
+pip install stockpriceanna 
+```
+or
+```
+pip install stockpriceanna --upgrade
+```
 required package: pandas, numpy
-
 
 Completed projects
 ===========================================================================================================================
