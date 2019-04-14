@@ -12,8 +12,11 @@ Completed projects
 ======================================================================================================================================
 VR_test:
 ----------------------------
+
 This method take a array-like data as input and perform variance ratio test according to Lo and MacKinlay's algorithem for testing the hypothsis that price follows gemetric random walk
+
 The test detects deviation from log-normal distribution in asset returns by comparing estimated variances from different holding periods
+
 This method allows array-like inputs for the choise of long-period variance and it returns the Z statistics or the p-values corresponding to each input
 
 example:
@@ -23,6 +26,7 @@ from pandas_datareader import data
 p1= data.DataReader('AAPL', 'yahoo', "2013-01-01", "2019-01-01")  #a super large cap stock
 VR_test(data=p1["Adj Close"], sub_size=range(2,10))
 output:  (do not reject the null)
+
 lvar_size
 2    0.3264
 3   -0.0111
