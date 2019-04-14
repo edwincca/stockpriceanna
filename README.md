@@ -9,7 +9,7 @@ required package: pandas, numpy
 
 
 Completed projects
-======================================================================================================================================
+===========================================================================================================================
 VR_test:
 ----------------------------
 
@@ -20,6 +20,8 @@ The test detects deviation from log-normal distribution in asset returns by comp
 This method allows array-like inputs for the choise of long-period variance and it returns the Z statistics or the p-values corresponding to each input
 
 example:
+```
+
 from stockpriceanna import VR_test
 from pandas_datareader import data
 
@@ -52,5 +54,6 @@ lvar_size
 9   -2.7329
 Name: Z-stat, dtype: float64
 
+```
 
 
