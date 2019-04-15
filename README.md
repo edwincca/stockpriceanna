@@ -1,7 +1,7 @@
 # stockpriceanna
 a collection of tools for analyzing stock prices
 
-current version: 1.0.1
+current version: 1.0.4
 
 installation:
 ```
@@ -57,6 +57,39 @@ lvar_size
 8   -1.9327
 9   -2.7329
 Name: Z-stat, dtype: float64
+```
+
+pricegen
+--------------------------------
+The pricegen class generates a simulated price series made of two components - the real and the noise. The noise component has only an one-period effect on price while the real component has a permanent effect on price, which leads to a random walk. User can further specify a determinsitic trend factor and a decaying effect of random shock on stock prices, which creates artificial autocorrelation in returns. The generated factor and noise components are stored in the self.data dataframe for analysis from an insider's view. 
+
+example:
+```
+from stockpriceanna.pricegen import spgen
+
+d1 = spgen(size=1000)  #specify the size of the simulation
+d1.gen_ln(var=0.01,seed=1) #create a log-normal component as a factor
+d1.gen_ln(mean=0,var=0.005,add_type="noise",seed=2) #create a log-normal component as a noise
+d1.gen_ac(base="ln_u=0_v=0.01",rate=0.2,lag=3) #specify how previous shock to stock price decay overtime
+d1.gen_trend(rate=0.0005) #set a trend 
+d1.gen_price() #generate the stock price
+d1.show_price(show_rprice=True).head(5)
+output:
+                price     price_r
+2016-07-20  99.791838  100.000000
+2016-07-21  99.737430   99.765493
+2016-07-22  98.179226   99.233497
+2016-07-23  98.916888   98.108953
+2016-07-24  97.892366   98.774131
+
+d1.show_price(show_rprice=True).tail(5)
+output"
+                 price     price_r
+2019-04-11  272.547973  272.436344
+2019-04-12  267.286253  266.527270
+2019-04-13  264.979419  265.290266
+2019-04-14  266.131092  266.084376
+2019-04-15  266.115019  265.853310
 ```
 
 
