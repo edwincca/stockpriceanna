@@ -18,7 +18,7 @@ Completed projects
 VR_test:
 ----------------------------
 
-This method take a array-like data as input and perform variance ratio test according to Lo and MacKinlay's algorithem for testing the hypothsis that price follows gemetric random walk
+This method takes a array-like data as input and perform variance ratio test according to Lo and MacKinlay's algorithem for testing the hypothsis that price follows gemetric random walk
 
 The test detects deviation from log-normal distribution in asset returns by comparing estimated variances from different holding periods
 
@@ -83,7 +83,7 @@ output:
 2016-07-24  97.892366   98.774131
 
 d1.show_price(show_rprice=True).tail(5)
-output"
+output:
                  price     price_r
 2019-04-11  272.547973  272.436344
 2019-04-12  267.286253  266.527270
