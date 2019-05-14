@@ -26,7 +26,7 @@ This method allows array-like inputs for the choise of long-period variance and 
 
 example:
 ```
-from stockpriceanna import VR_test
+from stockpriceanna.utils import VR_test
 from pandas_datareader import data
 
 p1= data.DataReader('AAPL', 'yahoo', "2013-01-01", "2019-01-01")  #a super large cap stock
