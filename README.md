@@ -1,7 +1,7 @@
 # stockpriceanna
 a collection of tools for analyzing stock prices
 
-current version: 1.0.4
+current version: 1.0.7
 
 installation:
 ```
@@ -72,8 +72,11 @@ d1.gen_ln(var=0.01,seed=1) #create a log-normal component as a factor
 d1.gen_ln(mean=0,var=0.005,add_type="noise",seed=2) #create a log-normal component as a noise
 d1.gen_ac(base="ln_u=0_v=0.01",rate=0.2,lag=3) #specify how previous shock to stock price decay overtime
 d1.gen_trend(rate=0.0005) #set a trend 
-d1.gen_price() #generate the stock price
-d1.show_price(show_rprice=True).head(5)
+d1.gen_custom(func =lambda:(1+ 0.02*(np.random.rand()-0.5)),name="unit_noise",add_type="noise") #create another noise variable that follows unitform distribution
+d1.gen_custom(func = lambda l1,l2: (l1+l2)/2 if (l1-1)*(l2-1)>0 else 1,var="unit_noise",name="mom_factor",add_type="factor") #create a momentum factor based on the lag values of the uniform noise
+d1.gen_price(method="m") #generate the stock prices using multiplicative model
+d1.show_price(show_rprice=True).tail(10)
+
 output:
                 price     price_r
 2016-07-20  99.791838  100.000000
