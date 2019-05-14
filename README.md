@@ -61,11 +61,12 @@ Name: Z-stat, dtype: float64
 
 pricegen
 --------------------------------
-The pricegen class generates a simulated price series made of two components - the real and the noise. The noise component has only an one-period effect on price while the real component has a permanent effect on price, which leads to a random walk. User can further specify a determinsitic trend factor and a decaying effect of random shock on stock prices, which creates artificial autocorrelation in returns. The generated factor and noise components are stored in the self.data dataframe for analysis from an insider's view. 
+The pricegen class generates a simulated price series made of two components - the real and the noise. The noise component has only an one-period effect on price while the real component has a permanent effect on price. User may add customized behaviors to the artifical stock prices including: determinsitic trend, decaying effect of random shock on stock prices, autocorrelation, and price momentum. The generated factor and noise components are stored in the self.data dataframe for analysis from an insider's view. 
 
 example:
 ```
 from stockpriceanna.pricegen import spgen
+import numpy as np
 
 d1 = spgen(size=1000)  #specify the size of the simulation
 d1.gen_ln(var=0.01,seed=1) #create a log-normal component as a factor
@@ -78,21 +79,17 @@ d1.gen_price(method="m") #generate the stock prices using multiplicative model
 d1.show_price(show_rprice=True).tail(10)
 
 output:
-                price     price_r
-2016-07-20  99.791838  100.000000
-2016-07-21  99.737430   99.765493
-2016-07-22  98.179226   99.233497
-2016-07-23  98.916888   98.108953
-2016-07-24  97.892366   98.774131
-
-d1.show_price(show_rprice=True).tail(5)
-output:
                  price     price_r
-2019-04-11  272.547973  272.436344
-2019-04-12  267.286253  266.527270
-2019-04-13  264.979419  265.290266
-2019-04-14  266.131092  266.084376
-2019-04-15  266.115019  265.853310
+2019-05-05  206.818631  207.715480
+2019-05-06  208.517919  207.593980
+2019-05-07  209.955386  208.456761
+2019-05-08  211.557670  211.442844
+2019-05-09  213.869664  215.467602
+2019-05-10  216.946547  215.952856
+2019-05-11  212.117639  211.268894
+2019-05-12  212.944435  211.194571
+2019-05-13  211.314871  213.129797
+2019-05-14  213.727595  212.944717
 ```
 
 
