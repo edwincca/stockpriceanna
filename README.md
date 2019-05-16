@@ -1,7 +1,7 @@
 # stockpriceanna
 a collection of tools for analyzing stock prices
 
-current version: 1.0.7
+current version: 1.0.8
 
 installation:
 ```
@@ -69,27 +69,29 @@ from stockpriceanna.pricegen import spgen
 import numpy as np
 
 d1 = spgen(size=1000)  #specify the size of the simulation
-d1.gen_ln(var=0.01,seed=1) #create a log-normal component as a factor
-d1.gen_ln(mean=0,var=0.005,add_type="noise",seed=2) #create a log-normal component as a noise
-d1.gen_ac(base="ln_u=0_v=0.01",rate=0.2,lag=3) #specify how previous shock to stock price decay overtime
-d1.gen_trend(rate=0.0005) #set a trend 
+d1.gen_ln(mean=0,var=0.01,seed=1,name="factor") #create a log-normal component as a factor
+d1.gen_ln(mean=0,var=0.005,name="noise",add_type="noise",seed=2) #create a log-normal component as a noise
+d1.gen_ac(base="factor",rate=0.2,lag=3,name="lag3_ac") #specify how previous shock to stock price decay overtime
+d1.gen_trend(rate=0.0005,name="trend") #set a trend 
 d1.gen_custom(func =lambda:(1+ 0.02*(np.random.rand()-0.5)),name="unit_noise",add_type="noise") #create another noise variable that follows unitform distribution
 d1.gen_custom(func = lambda l1,l2: (l1+l2)/2 if (l1-1)*(l2-1)>0 else 1,var="unit_noise",name="mom_factor",add_type="factor") #create a momentum factor based on the lag values of the uniform noise
 d1.gen_price(method="m") #generate the stock prices using multiplicative model
+d1.gen_periodic(name="2period_factor",func=lambda p,var: 1.1*var if p==0 else 0.9*var,add_type="noise",period=2,var="noise") #generates a periodic filter that amplifier/reduce the base noise by 10% in cycle. 
+d1.gen_teffect(name="Jan_effect",func=lambda t: 1.001 if t.month==1 else 1,add_type="factor") #generates a January effect that boosts stock returns by a daily factor.
+
 d1.show_price(show_rprice=True).tail(10)
 
 output:
                  price     price_r
-2019-05-05  206.818631  207.715480
-2019-05-06  208.517919  207.593980
-2019-05-07  209.955386  208.456761
-2019-05-08  211.557670  211.442844
-2019-05-09  213.869664  215.467602
-2019-05-10  216.946547  215.952856
-2019-05-11  212.117639  211.268894
-2019-05-12  212.944435  211.194571
-2019-05-13  211.314871  213.129797
-2019-05-14  213.727595  212.944717
-```
-
+2019-05-07  206.818631  207.715480
+2019-05-08  208.517919  207.593980
+2019-05-09  209.955386  208.456761
+2019-05-10  211.557670  211.442844
+2019-05-11  213.869664  215.467602
+2019-05-12  216.946547  215.952856
+2019-05-13  212.117639  211.268894
+2019-05-14  212.944435  211.194571
+2019-05-15  211.314871  213.129797
+2019-05-16  213.727595  212.944717
+"""
 
