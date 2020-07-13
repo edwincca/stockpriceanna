@@ -53,13 +53,13 @@ periods
 9   -1.817293
 Name: Z-stat, dtype: float64
 #comment: minor but not enough evidence of mean reversion. the U.S market appears to become more efficient
-"""
+'''
 
 ## pricegen
 The pricegen class generates a simulated price series made of two components - the real and the noise. The noise component has only an one-period effect on price while the real component has a permanent effect on price, which leads to a random walk. User can further specify a determinsitic trend factor and a decaying effect of random shock on stock prices, which creates artificial autocorrelation in returns. The generated factor and noise components are stored in the self.data dataframe for analysis from an insider's view.
 
 ## example
-"""sh
+'''sh
 from stockpriceanna.pricegen import spgen
 
 d1 = spgen(size=1000)  #specify the size of the simulation
@@ -85,4 +85,4 @@ output:
 2020-07-10  264.979419  265.290266
 2020-07-11  266.131092  266.084376
 2020-07-12  266.115019  265.853310
-"""
+'''
