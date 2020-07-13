@@ -1,9 +1,11 @@
-<h2> stock price analytical tools
-<h2>current version: 1.2.2
+# stock price analytical tools
+## current version: 1.2.2
 
-<h3>installation:
-pip install stockpriceanna (or pip install stockpriceanna --upgrade)
-required package: pandas, numpy
+## installation
+> pip install stockpriceanna (or pip install stockpriceanna --upgrade)
+
+<h3>required package
+> pandas, numpy
 
 
 #Completed projects
