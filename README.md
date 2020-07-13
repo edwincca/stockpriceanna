@@ -18,7 +18,6 @@
 ## example:
 ```sh
 from stockpriceanna import VR_test
-from pandas_datareader import data # use: pip install pandas_datareader --upgrade , if user warning appears 
 
 sp500 = pd.read_csv(
 "https://query1.finance.yahoo.com/v7/finance/download/%5EGSPC?period1=946684800&period2=1577836800&interval=1d&events=history") 
