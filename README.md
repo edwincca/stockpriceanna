@@ -1,37 +1,35 @@
-#stock price analytical tools
+<h2> stock price analytical tools
+<h2>current version: 1.2.2
 
-current version: 1.2.2
-
-installation:
+<h3>installation:
 pip install stockpriceanna (or pip install stockpriceanna --upgrade)
 required package: pandas, numpy
 
 
-Completed projects
+#Completed projects
 ==============================================================================================
-VR_test:
-----------------------------
+#VR_test:
     This method takes a array-like data as input and perform variance ratio test according to Lo and MacKinlay's algorithem for testing the hypothsis that price follows gemetric random walk
     The test detects deviation from log-normal distribution in asset returns by comparing estimated variances from different holding periods
     This method allows array-like inputs for the choise of long-period variance and it returns the Z statistics or the p-values corresponding to each input
 
-example:
-from stockpriceanna import VR_test
-from pandas_datareader import data # use: pip install pandas_datareader --upgrade , if user warning appears 
+#example:
+>from stockpriceanna import VR_test
+>from pandas_datareader import data # use: pip install pandas_datareader --upgrade , if user warning appears 
 
-sp500 = pd.read_csv(
-"https://query1.finance.yahoo.com/v7/finance/download/%5EGSPC?period1=946684800&period2=1577836800&interval=1d&events=history") 
-#load SP500 index daily data betwen 2000-2020 from Yahoo 
-sp500 =sp500.set_index("Date",drop=True)
-p1 = sp500.loc[:"2010"]["Close"] 
-p2 = sp500.loc["2010":]["Close"]
-VR_test(data=p1, periods=range(2,10))
-output:  
-periods
-2   -2.599856
-3   -3.200185
-4   -2.743059
-5   -2.502471
+>sp500 = pd.read_csv(
+>"https://query1.finance.yahoo.com/v7/finance/download/%5EGSPC?period1=946684800&period2=1577836800&interval=1d&events=history") 
+>#load SP500 index daily data betwen 2000-2020 from Yahoo 
+>sp500 =sp500.set_index("Date",drop=True)
+>p1 = sp500.loc[:"2010"]["Close"] 
+>p2 = sp500.loc["2010":]["Close"]
+>VR_test(data=p1, periods=range(2,10))
+>output:  
+>periods
+>2   -2.599856
+>3   -3.200185
+>4   -2.743059
+>5   -2.502471
 6   -2.406569
 7   -2.287762
 8   -2.262762
