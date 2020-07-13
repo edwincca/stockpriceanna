@@ -4,16 +4,16 @@
 ## installation
 > pip install stockpriceanna (or pip install stockpriceanna --upgrade)
 
-<h3>required package
+## required package
 > pandas, numpy
 
 
-#Completed projects
-==============================================================================================
-#VR_test:
-    This method takes a array-like data as input and perform variance ratio test according to Lo and MacKinlay's algorithem for testing the hypothsis that price follows gemetric random walk
-    The test detects deviation from log-normal distribution in asset returns by comparing estimated variances from different holding periods
-    This method allows array-like inputs for the choise of long-period variance and it returns the Z statistics or the p-values corresponding to each input
+## Completed projects
+
+##VR_test:
+>   This method takes a array-like data as input and perform variance ratio test according to Lo and MacKinlay's algorithem for testing the hypothsis that price follows gemetric random walk
+>   The test detects deviation from log-normal distribution in asset returns by comparing estimated variances from different holding periods
+>   This method allows array-like inputs for the choise of long-period variance and it returns the Z statistics or the p-values corresponding to each input
 
 #example:
 >from stockpriceanna import VR_test
